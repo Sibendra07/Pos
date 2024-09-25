@@ -12,53 +12,8 @@ This project is a Point of Sale (POS) system designed to optimize retail operati
 - Sales reports generation
 - PDF and Excel report exports
 
-## Prerequisites
-- Python 3.x
-- Pipenv
-  
-## Installation
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/username/pos-system.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd pos-system
-    ```
-3. Install the dependencies && 3rds parties:
-    ```bash
-    pip install pipenv
-    pipenv install Django
-    pipenv install openpyxl
-    pipenv install html2pdf
-    ```
-
-## Usage
-
-## Usage
-1. Activate the virtual environment:
-    ```bash
-    pipenv shell
-    ```
-2. Apply migrations:
-    ```bash
-    pipenv run python manage.py makemigrations
-    pipenv run python manage.py migrate
-    ```
-3. Run the application:
-    ```bash
-    pipenv run python manage.py runserver
-    ```
-4. Open your web browser and go to:
-    ```
-    http://localhost:8000
-    ```
 
 
-For questions or collaboration, please contact me via [Twitter](https://twitter.com/Wa_ViGo) or email at [Gmail](mailto:geralnede@gmail.com).
-
-## License
-This project is licensed under the MIT License.
 
 ## Screenshoots
 ![Screenshot_1](https://github.com/Waldo0137/tienda/assets/54595253/f70ea2cf-bba0-4d99-8839-48ae8b0357da)
