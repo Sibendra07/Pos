@@ -44,7 +44,9 @@
             <tr>
               <td class="link-cell text-center"><a href="{% url 'inventory:category_products' category.id %}">{{ category.name }}</a></td>
               <td class="text-center">{{ category.description }}</td>
-              <td class="text-center">{{ category.product_count }}</td>
+              <td class="text-center"> <a href="{% url 'inventory:category_products' category.id %}">
+                {{ category.product_count }}
+              </a> </td>
               <td class="text-center">{{ category.date_added|date:'d-m-Y H:i' }}</td>
               <td class="text-center">{{ category.date_updated|date:'d-m-Y H:i' }}</td>
               <td class="text-center">
