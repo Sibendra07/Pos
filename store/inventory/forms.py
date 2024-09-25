@@ -11,35 +11,35 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ['name', 'description']
         labels = {
-            'name': 'Nombre',
-            'description': 'Descripcion',
+            'name': 'Name',
+            'description': 'Description',
         }
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino Dulce',
+                'placeholder': 'Sweet wine',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese información general Etc.',
+                'placeholder': 'Enter general information Etc.',
                 'rows': 3,  
             }),
             
         }
         error_messages = {
-            # Puedes agregar mensajes de error personalizados aquí si es necesario
+            # You can add custom error messages here if necessary
         }
         
     def clean_name(self):
         name = self.cleaned_data.get('name')
         if name:
-            # Normalizar el nombre: eliminar acentos, espacios extra y convertir a minúsculas
+            # Normalize the name: remove accents, extra spaces and convert to lowercase
             normalized_name = ''.join(c for c in unicodedata.normalize('NFD', name)
                                     if unicodedata.category(c) != 'Mn')
             normalized_name = re.sub(r'\s+', '', normalized_name.lower())
             
             instance = self.instance
-            # Buscar categorías existentes con nombres similares
+           # Search existing categories with similar names
             existing_categories = Category.objects.exclude(id=instance.id)
             for category in existing_categories:
                 category_normalized = ''.join(c for c in unicodedata.normalize('NFD', category.name)
@@ -55,42 +55,42 @@ class ProductsForm(forms.ModelForm):
         model = Products
         fields = ['code', 'category', 'name', 'description', 'price', 'status']
         labels = {
-            'code': 'Código',
-            'category': 'Categoría',
-            'name': 'Nombre del Producto',
-            'description': 'Descripción',
-            'price': 'Precio',
-            'status': 'Estado',
-            'cost': 'Costo',
-            'quantity': 'Cantidad',
+            'code': 'Code',
+            'category': 'Category',
+            'name': 'Product Name',
+            'description': 'Description',
+            'price': 'Price',
+            'status': 'State',
+            'cost': 'Cost',
+            'quantity': 'Quantity',
         }
         widgets = {
             'code': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino001',
+                'placeholder': 'Wine001',
             }),
             'category': forms.Select(attrs={
                 'class': 'form-control',
             }),
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino Dulce',
+                'placeholder': 'Sweet wine',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese información general Etc.',
+                'placeholder': 'Enter general information Etc.',
                 'rows': 3,
             }),
             'price': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese el precio del producto',
+                'placeholder': 'Enter the price of the product',
                 'step': '0.01',
             }),
             'status': forms.Select(attrs={
                 'class': 'form-control',
             }, choices=[
-                (1, 'Activo'),
-                (0, 'Inactivo')
+                (1, 'Active'),
+                (0, 'Inactive')
             ]),
             
             'cost': forms.NumberInput(attrs={
@@ -100,29 +100,29 @@ class ProductsForm(forms.ModelForm):
         }
         error_messages = {
             'code': {
-                'required': 'Este campo es obligatorio.',
-                'max_length': 'Este campo no puede exceder de 100 caracteres.',
+                'required': 'This field is required.',
+                'max_length': 'This field cannot exceed 100 characters.',
             },
             'category': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required.',
             },
             'name': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required.',
             },
             'description': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required.',
             },
             'price': {
-                'required': 'Este campo es obligatorio.',
-                'invalid': 'Ingrese un precio válido.',
+                'required': 'This field is required.',
+                'invalid': 'Please enter a valid price.',
             },
             'status': {
-                'required': 'Este campo es obligatorio.',
-                'invalid': 'Ingrese un estado válido.',
+                'required': 'This field is required.',
+                'invalid': 'Please enter a valid status.',
             }
         }
     def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super(ProductsForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             if field.errors:
@@ -166,16 +166,16 @@ class ProductsForm(forms.ModelForm):
             
             for product in name_duplicates:
                 if self.normalize_text(product.name) == normalized_name:
-                    self.add_error('name', "Ya existe un producto con un nombre similar.")
-                    raise ValidationError("Ya existe un producto con un nombre similar.")
+                    self.add_error('name', "There is already a product with a similar name.")
+                    raise ValidationError("A product with a similar name already exists.")
 
             # Verificar duplicados de código
             code_duplicates = Products.objects.filter(code__iexact=normalized_code)
             if instance_id:
                 code_duplicates = code_duplicates.exclude(pk=instance_id)
             if code_duplicates.exists():
-                self.add_error('code', "Ya existe un producto con este código.")
-                raise ValidationError("Ya existe un producto con este código.")
+                self.add_error('code', "A product with this code already exists.")
+                raise ValidationError("A product with this code already exists.")
 
         return cleaned_data
     
