@@ -43,7 +43,7 @@ class salesItems(models.Model):
     total = models.FloatField(default=0)
 
     def save(self, *args, **kwargs):
-        print(f"Guardando SalesItem: Producto: {self.product.name}, Cantidad Vendida: {self.qty}")
+        print(f"Saving SalesItem: Product: {self.product.name}, Quantity Sold:{self.qty}")
         super().save(*args, **kwargs)
         self.update_product_quantity()
         
@@ -53,6 +53,6 @@ class salesItems(models.Model):
     
     
     def delete(self, *args, **kwargs):
-        print(f"Eliminando SalesItem: Producto: {self.product.name}, Cantidad Vendida: {self.qty}")
+        print(f"Removing SalesItem: Product: {self.product.name}, Quantity Sold: {self.qty}")
         self.product.increase_quantity(self.qty)
         super().delete(*args, **kwargs)
