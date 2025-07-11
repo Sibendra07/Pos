@@ -7,61 +7,75 @@
 <div class="container-fluid">
     <div id="outprint">
         <div class="lh-1">
-            <center><small class="fw-bold">Punto de Venta </small></center>
-            <center><small class="fw-bold">Recibo no oficial</small></center>
+            <center><small class="fw-bold">Point of Sale </small></center>
+            <center><small class="fw-bold">unofficial receipt</small></center>
         </div>
         <hr>
         <div class="lh-1">
             <div>
                 
-                <span>Fecha:</span> {{ formatted_date }}<br>
+                <span>Date : </span> {{ formatted_date }}<br>
 
-                <span>Codigo de Transaccion:</span> {{ transaction.code }}
+                <span>Transaction Code :</span> {{ transaction.code }}
             </div>
         </div>
         <div class="clear-fix py-3"></div>
-        <div class="lh-1">
-            <div class="d-flex w-100 align-items-end border-bottom">
-                <div class="col-2 text-center fw-bold">Cantidad</div>
-                <div class="col-6 text-center fw-bold">Producto</div>
-                <div class="col-4 text-center fw-bold">Monto</div>
-            </div>
-            {% for item in salesItems %}
-            <div class="d-flex w-100 align-items-end">
-                <div class="col-2 text-center fw-bold">{{ item.qty|intcomma|floatformat:0 }}</div>
-                <div class="col-6 fw-bold">
-                    <div class="lh-1">
-                        <small>{{ item.product }}</small><br>
-                        <small>{{ item.price|intcomma }}</small><br>
-                    </div>
-                </div>
-                <div class="col-4 text-end fw-bold">{{ item.total|intcomma }}</div>
-            </div>
-            {% endfor %}
-            <hr>
-            <div class="d-flex w-100 align-items-end">
-                <div class="col-6 text-start fw-bold">Total</div>
-                <div class="col-6 text-end fw-bold">{{ transaction.grand_total|intcomma }}</div>
-            </div>
-            <div class="d-flex w-100 align-items-end">
-                <div class="col-6 text-start fw-bold">Tax <small>(inclusive)</small>: {{ transaction.tax|intcomma }}%</div>
-                <div class="col-6 text-end fw-bold">{{ transaction.tax_amount|intcomma|floatformat:2 }}</div>
-            </div>
-            <div class="d-flex w-100 align-items-end">
-                <div class="col-6 text-start fw-bold">Tenedered</div>
-                <div class="col-6 text-end fw-bold">{{ transaction.tendered_amount|intcomma }}</div>
-            </div>
-            <div class="d-flex w-100 align-items-end">
-                <div class="col-6 text-start fw-bold">Change</div>
-                <div class="col-6 text-end fw-bold">{{ transaction.amount_change|intcomma }}</div>
-            </div>
-        </div>
+        <div class="clear-fix py-3"></div>
+
+<div class="lh-1">
+  <!-- Header Row -->
+  <div class="d-flex w-100 align-items-end border-bottom py-2">
+    <div class="col-2 text-center fw-bold">Quantity</div>
+    <div class="col-6 text-center fw-bold">Product</div>
+    <div class="col-2 text-center fw-bold">Price</div>
+    <div class="col-2 text-center fw-bold">Amount</div>
+  </div>
+
+  <!-- Items Loop -->
+  {% for item in salesItems %}
+  <div class="d-flex w-100 align-items-end py-2 border-bottom">
+    <div class="col-2 text-center">{{ item.qty|intcomma|floatformat:0 }}</div>
+    <div class="col-6 text-center">
+      <div class="lh-1">
+        <small>{{ item.product }}</small>
+      </div>
     </div>
+    <div class="col-2 text-center">
+      <small>{{ item.price|intcomma }}</small>
+    </div>
+    <div class="col-2 text-end">{{ item.total|intcomma }}</div>
+  </div>
+  {% endfor %}
+
+  <hr>
+
+  <!-- Summary Rows -->
+  <div class="d-flex w-100 align-items-end py-2">
+    <div class="col-6 text-start fw-bold">Total</div>
+    <div class="col-6 text-end fw-bold">{{ transaction.grand_total|intcomma }}</div>
+  </div>
+
+  <div class="d-flex w-100 align-items-end py-2">
+    <div class="col-6 text-start fw-bold">Tax <small>(inclusive)</small>: {{ transaction.tax|intcomma }}%</div>
+    <div class="col-6 text-end fw-bold">{{ transaction.tax_amount|intcomma|floatformat:2 }}</div>
+  </div>
+
+  <div class="d-flex w-100 align-items-end py-2">
+    <div class="col-6 text-start fw-bold">Tendered</div>
+    <div class="col-6 text-end fw-bold">{{ transaction.tendered_amount|intcomma }}</div>
+  </div>
+
+  <div class="d-flex w-100 align-items-end py-2">
+    <div class="col-6 text-start fw-bold">Change</div>
+    <div class="col-6 text-end fw-bold">{{ transaction.amount_change|intcomma }}</div>
+  </div>
+</div>
+
     <hr>
     <div class="clear-fix py-3"></div>
     <div class="d-flex w-100 justify-content-end">
-        <button class="btn btn-light bg-gradient border rounded-0 btn-sm me-1" type="button" id="receipt_print"><i class="mdi mdi-printer"></i> Imprimir</button>
-        <button class="btn btn-secondary bg-gradient border rounded-0 btn-sm" type="button" data-bs-dismiss="modal"><i class="mdi mdi-close"></i> Cerrar</button>
+        <button class="btn btn-light bg-gradient border rounded-0 btn-sm me-1" type="button" id="receipt_print"><i class="mdi mdi-printer"></i> Print</button>
+        <button class="btn btn-secondary bg-gradient border rounded-0 btn-sm" type="button" data-bs-dismiss="modal"><i class="mdi mdi-close"></i> Close</button>
     </div>
 </div>
 <script>
@@ -72,7 +86,7 @@
             var el = $("<div>")
             head.append('<style>body{background-color:unset !important}</style>')
             el.append(head)
-            el.find('title').text("Recibo - Vista Impresion")
+            el.find('title').text("Receipt - Print View")
             el.append(p)
             start_loader()
             var nw = window.open('', '_blank', "width=800,height=800,left=300, top = 200")

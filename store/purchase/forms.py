@@ -8,28 +8,28 @@ class SupplierForm(forms.ModelForm):
         model = Supplier
         fields = ['name', 'contact_info']
         labels = {
-            'name': 'Nombres y Apellidos(Persona/Empresa)',
-            'contact_info': 'Informacion de Proveedor',
+            'name': 'Names and Surnames (Person/Company)',
+            'contact_info': 'Supplier Information',
         }
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Nombres y Apellido / Empresa S.A.    ',
+                'placeholder': 'Names and Surname / Company S.A. ',
             }),
             'contact_info': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese información:\n Dirección\n Teléfono\n Rubro\n Etc',
+                'placeholder': 'Enter information:\n Address\n Telephone\n Sector\n Etc.',
                 'rows': 6,  
             }),
         }
         error_messages = {
             'name': {
-                'required': 'El nombre del proveedor es obligatorio.',
-                'max_length': 'El nombre no puede exceder los 100 caracteres.',
+                'required': 'The providers name is required.',
+                'max_length': 'The name cannot exceed 100 characters.',
             },
             'contact_info': {
-                'required': 'La información de contacto es obligatoria.',
-                'max_length': 'La información de contacto no puede exceder los 200 caracteres.',
+                'required': 'Contact information is required.',
+                'max_length': 'Contact information cannot exceed 200 characters.',
             },
         }
 
@@ -38,31 +38,31 @@ class PurchaseForm(forms.ModelForm):
         model = PurchaseProduct
         fields = ['supplier', 'product','cost','qty']
         labels = {
-            'supplier': 'Proveedor',
-            'product': 'Productos',
-            'cost': 'Costo',
-            'qty':'Cantidad',
+            'supplier': 'Supplier',
+            'product': 'Products',
+            'cost': 'Cost',
+            'qty':'Quantity',
         }
         widgets = {
             'supplier': forms.Select(attrs={'class': 'form-control'}),
             'product': forms.Select(attrs={'class': 'form-control'}),
             'cost': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese el monto total',
+                'placeholder': 'Enter the total amount',
             }),
             'qty': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese el monto total',
+                'placeholder': 'Enter the total amount',
             }),
         }
         error_messages = {
             'qty': {
-                'required': 'El cantidad es obligatorio.',
-                'invalid': 'Ingrese un cantidad válida.',
+                'required': 'The quantity is mandatory.',
+                'invalid': 'Please enter a valid amount.',
             },
             'cost':{
-                'required': 'El costo debe tener 8 decimales.',
-                'invalid': 'Ingrese un monto válido.',
+                'required': 'The cost must have 8 decimal places.',
+                'invalid': 'Please enter a valid amount.',
             }
         }
         

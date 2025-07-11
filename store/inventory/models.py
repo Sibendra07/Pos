@@ -37,12 +37,12 @@ class Products(models.Model):
     STATUS_INACTIVE = 0
     STATUS_ACTIVE = 1
     STATUS_CHOICES = [
-        (STATUS_INACTIVE, 'Inactivo'),
-        (STATUS_ACTIVE, 'Activo'),
+        (STATUS_INACTIVE, 'Inactive'),
+        (STATUS_ACTIVE, 'Active'),
     ]
 
     code = models.CharField(max_length=100, unique=True)
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -97,9 +97,9 @@ class Products(models.Model):
     def clean(self):
         super().clean()
         if self.price <= Decimal('0'):
-            raise ValidationError("El precio debe ser mayor que cero.")
+            raise ValidationError("The price must be greater than zero.")
         if self.cost < Decimal('0'):
-            raise ValidationError("El costo no puede ser negativo.")
+            raise ValidationError("The cost cannot be negative.")
     
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -143,4 +143,4 @@ class Products(models.Model):
         if self.cost > 0:
             return (self.price - self.cost) / self.cost
         return None
-    # !no funciono porbar solo la eliminacion don pruchase
+# !it didn't work because just the deletion don pruchase

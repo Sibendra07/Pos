@@ -5,7 +5,7 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
     <div class="mdc-card py-2">
         <div class="d-flex justify-content-between align-items-center">
-            <h4 class="card-title mb-0">Crear Compra</h4>
+            <h4 class="card-title mb-0">Create Purchase</h4>
         </div>
     </div>
 </div>
@@ -68,11 +68,11 @@
                 <hr>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <label class="form-label" style="color: #333;">Fecha de Creación</label>
+                        <label class="form-label" style="color: #333;">Creation Date</label>
                         <p style="color: #666;">{{ form.instance.date_added }}</p>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label" style="color: #333;">Fecha de Actualización</label>
+                        <label class="form-label" style="color: #333;">Update Date</label>
                         <p style="color: #666;">{{ form.instance.date_updated }}</p>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                     <div class="col-12 d-flex justify-content-end">
                         
                         <div class="btn-group">
-                            <a href="{% url 'purchase:purchase_list' %}" class="btn btn-secondary" style="background-color: #6c757d;">Volver a la lista de compras</a>
-                            <button type="submit" class="btn btn-success" style="background-color: #28a745;">Guardar</button>
+                            <a href="{% url 'purchase:purchase_list' %}" class="btn btn-secondary" style="background-color: #6c757d;">Return to Purchase List</a>
+                            <button type="submit" class="btn btn-success" style="background-color: #28a745;">Create</button>
                         </div>
                     </div>
                 </div>

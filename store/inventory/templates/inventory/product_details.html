@@ -5,20 +5,20 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
   <div class="mdc-card py-2">
     <div class="d-flex justify-content-between align-items-center">
-      <h4 class="card-title mb-0">Detalles de {{ product.name }}</h4>
+      <h4 class="card-title mb-0">Details of {{ product.name }}</h4>
     </div>
   </div>
 </div>
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
   <div class="mdc-card">
     <div class="card-body">
-      <p><strong>Código:</strong> {{ product.code }}</p>
-      <p><strong>Nombre:</strong> {{ product.name }}</p>
-      <p><strong>Descripción:</strong> {{ product.description }}</p>
-      <p><strong>Costo:</strong> {{ product.cost }}</p>
-      <p><strong>Precio:</strong> {{ product.price }}</p>
-      <p><strong>Cantidad en Stock:</strong> {{ product.quantity }}</p>
-      <p><strong>Cantidad Histórica:</strong> {{ cantidad_historica }}</p>
+      <p><strong>Code:</strong> {{ product.code }}</p>
+      <p><strong>Name:</strong> {{ product.name }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong>Cost:</strong> {{ product.cost }}</p>
+      <p><strong>Price:</strong> {{ product.price }}</p>
+      <p><strong>Stock Quantity:</strong> {{ product.quantity }}</p>
+      <p><strong>Historical Amount:</strong> {{ historical_quantity }}</p>
       <td class="text-center">
         <a href="{% url 'inventory:product_list' %}" class="btn btn-success btn-sm" title="Lista de Productos">
           <i class="mdi mdi-view-list"></i>
