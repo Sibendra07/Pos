@@ -27,7 +27,7 @@
                 clearFilterButtonTooltip: "Remover filtro",
                 insertButtonTooltip: "Adicionar",
                 updateButtonTooltip: "Atualizar",
-                cancelEditButtonTooltip: "Cancelar Edição"
+                cancelEditButtonTooltip: "cancel Edição"
             }
         },
 
