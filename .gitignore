@@ -3,3 +3,5 @@ store-env/
 __pycache__/
 *.pyc
 .pyc
+db.sqlite3
+migrations
