@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Proveedores y Productos</title>
+    <title>Supplier and Product List</title>
     <style>
         
         body {
@@ -26,8 +26,8 @@
 </head>
 <body>
     
-    <h2>Listado de Proveedores y Productos</h2>
-    <p>Fecha de generación del informe: {{ current_date|date:"d/m/Y H:i:s" }}</p>
+    <h2>Supplier and Product List</h2>
+    <p>Report generated on: {{ current_date|date:"d/m/Y H:i:s" }}</p>
     
     {% for supplier in suppliers %}
         <h3>{{ supplier.name }}</h3>
@@ -35,8 +35,8 @@
             <thead>
                 <tr>
                     <th>Producto</th>
-                    <th>Costo Por Unidad</th>
-                    <th>Cantidad</th>
+                    <th>Cost per Unit</th>
+                    <th>Quantity</th>
                     <th>Fecha de Adquisición</th>
                 </tr>
             </thead>

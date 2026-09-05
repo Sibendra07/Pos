@@ -89,11 +89,11 @@
 </div>
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
     <div class="mdc-card py-1">
-        <h5 class="card-title">Lista Proveedores</h5>
+        <h5 class="card-title">Supplier Lists</h5>
             <div class="mdc-layout-grid_cell">
                 <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6 d-flex justify-content-end align-items-center">
                     <div class="mdc-card py-1">
-                        <h4 class="card-title mb-0">Lista Plana</h4>
+                        <h4 class="card-title mb-0">Flat List</h4>
                     <div class="button-group">
                         <a href="{% url 'report:supplier_pdf' %}" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" target="_blank">
                             <i class="material-icons">picture_as_pdf</i> PDF
@@ -108,7 +108,7 @@
             
             <div class="mdc-layout-grid__cell">
                 <div class="mdc-card py-1">
-                    <h4 class="card-title mb-0">Proveedores y Productos</h4>
+                    <h4 class="card-title mb-0">Suppliers and Products</h4>
                     <div class="button-group">
                         <a href="{% url 'report:supplier_product_pdf' %}" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" target="_blank">
                             <i class="material-icons">picture_as_pdf</i> PDF
@@ -125,12 +125,12 @@
 
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
     <div class="mdc-card py-1">
-        <h5 class="card-title">Lista Productos</h5>
+        <h5 class="card-title">Product Lists</h5>
         
             <div class="mdc-layout-grid mdc-layout-grid--horizontal">
                 <div class="mdc-layout-grid__cell">
                     <div class="mdc-card py-1">
-                        <h4 class="card-title mb-0">Lista de plana Productos</h4>
+                        <h4 class="card-title mb-0">Flat Product List</h4>
                         <div class="button-group">
                             <a href="{% url 'report:product_pdf' %}" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" target="_blank">
                                 <i class="material-icons">picture_as_pdf</i> PDF
@@ -144,7 +144,7 @@
                 
                 <div class="mdc-layout-grid__cell">
                     <div class="mdc-card py-1">
-                        <h4 class="card-title mb-0">Lista de Productos y Cantidades</h4>
+                        <h4 class="card-title mb-0">Products and Quantities</h4>
                         <div class="button-group">
                             <a href="{% url 'report:productqty_pdf' %}" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" target="_blank">
                                 <i class="material-icons">picture_as_pdf</i> PDF
@@ -168,41 +168,41 @@
 </div>
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-4">
     <div class="mdc-card py-1">
-        <h5 class="card-title">Reporte Diario</h5>
+        <h5 class="card-title">Daily Report</h5>
         <form id="daily-report-form" class="form" method="post" action="{% url 'report:mix_sales_pdf' %}">
             {% csrf_token %}
             <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
-                        <input id="year" type="number" name="year" placeholder="Año" class="mdc-text-field__input custom-year-input" min="2023" max="{{ max_year }}">
+                        <input id="year" type="number" name="year" placeholder="Year" class="mdc-text-field__input custom-year-input" min="2023" max="{{ max_year }}">
                     </div>
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
                         <select id="month" name="month" class="mdc-text-field__input custom-month-input">
-                            <option value="" disabled selected>Mes</option>
-                            <option value="1">Enero</option>
-                            <option value="2">Febrero</option>
-                            <option value="3">Marzo</option>
-                            <option value="4">Abril</option>
-                            <option value="5">Mayo</option>
-                            <option value="6">Junio</option>
-                            <option value="7">Julio</option>
-                            <option value="8">Agosto</option>
-                            <option value="9">Septiembre</option>
-                            <option value="10">Octubre</option>
-                            <option value="11">Noviembre</option>
-                            <option value="12">Diciembre</option>
+                            <option value="" disabled selected>Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
                     </div>
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
-                        <input id="day" type="number" name="day" placeholder="Día" class="mdc-text-field__input" min="1" max="31">
+                        <input id="day" type="number" name="day" placeholder="Day" class="mdc-text-field__input" min="1" max="31">
                     </div>
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
                         <button type="button" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" onclick="generateDayPDF()">
-                            <i class="material-icons">picture_as_pdf</i> Generar PDF
+                            <i class="material-icons">picture_as_pdf</i> Generate PDF
                         </button>
                     
                         <button type="button" class="mdc-button mdc-button--raised mdc-button--dense mdc-button--outlined icon-button" onclick="generateDayExcel()">
-                            <i class="material-icons">insert_drive_file</i> Generar Excel
+                            <i class="material-icons">insert_drive_file</i> Generate Excel
                         </button>
                     </div>
                 </div>
@@ -213,14 +213,14 @@
 
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-8">
     <div class="mdc-card py-1 px-1">
-        <h5 class="card-title">Reporte Diario entre Tramos</h5>
+        <h5 class="card-title">Daily Report by Date Range</h5>
         <form id="daily-section-report-form" class="form" method="post" action="{% url 'report:mixtramo_sales_pdf' %}">
             {% csrf_token %}
             <div class="mdc-layout-grid">
                 <div class="mdc-layout-grid__inner">
                     
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
-                        <h6 class="card-subtitle">Fecha de Inicio</h6>
+                        <h6 class="card-subtitle">Start Date</h6>
                         <div class="horizontal-fields">
                             <input id="start_day" type="number" name="start_day" placeholder="Día"
                                 class="mdc-text-field__input" min="1" max="31">

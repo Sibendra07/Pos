@@ -3,7 +3,7 @@
 <html>
 
 <head>
-    <title>Reporte de Ventas</title>
+    <title>Sales Report</title>
 
     <!-- Estilos CSS -->
     <style type="text/css">
@@ -132,22 +132,22 @@
 
 <body>
     <header>
-        <p>Reporte de Ventas - Generado el: {{ current_date|date:'d-m-Y H:i' }}</p>
+        <p>Sales Report - Generated on: {{ current_date|date:'d-m-Y H:i' }}</p>
         <p>Usuario: {{ username }}</p>
     </header>
     <div class="content">
-        <h2 class="text-center">Reporte Anual de Ventas</h2>
+        <h2 class="text-center">Annual Sales Report</h2>
         <h2 class="text-center">Gestión {{ year }}</h2>
         {% load humanize %}
 
         <table class="report-table">
             <thead>
                 <tr>
-                    <th class="report-cell report-cell-cliente">Clientes</th>
-                    <th class="report-cell">Fecha y Hora</th>
-                    <th class="report-cell report-cell-productos">Productos</th>
+                    <th class="report-cell report-cell-cliente">Customers</th>
+                    <th class="report-cell">Date and Time</th>
+                    <th class="report-cell report-cell-productos">Products</th>
                     <th class="report-cell">Total</th>
-                    <th class="report-cell">Cantidad Total Items</th>
+                    <th class="report-cell">Total Items</th>
                 </tr>
             </thead>
             <tbody>

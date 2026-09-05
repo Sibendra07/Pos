@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Reporte de Ventas</title>
+    <title>Sales Report</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,22 +60,22 @@
 </head>
 <body>
     <header>
-        <p>Reporte de Ventas - Generado el: {{ current_date|date:'d-m-Y H:i' }}</p>
+        <p>Sales Report - Generated on: {{ current_date|date:'d-m-Y H:i' }}</p>
         <p>Usuario: {{ username }}</p> 
     </header>
     <div class="content">
-        <h2>Reporte Diario de Ventas</h2>
-        <h2>Reporte del dia {{ day }} de {{month_name}}, {{ year }}</h2>
+        <h2>Daily Sales Report</h2>
+        <h2>Report for {{ day }} {{month_name}}, {{ year }}</h2>
         {% load humanize %}
         <table>
             <thead>
                 <tr>
                     {% comment %} !coste ganancia net {% endcomment %}
-                    <th class="col-clientes">Clientes</th>
-                    <th class="col-fecha-hora">Fecha y Hora</th>
-                    <th class="col-productos">Productos</th>
+                    <th class="col-clientes">Customers</th>
+                    <th class="col-fecha-hora">Date and Time</th>
+                    <th class="col-productos">Products</th>
                     <th class="col-total">Total</th>
-                    <th class="col-total-items">Cantidad Total Items</th>
+                    <th class="col-total-items">Total Items</th>
                 </tr>
             </thead>
             <tbody>
